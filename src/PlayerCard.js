@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PlayerCard = (props)=> {
+const PlayerCard = (props) => {
   return (
     <div className="player-card">{props.sign}</div>
   )

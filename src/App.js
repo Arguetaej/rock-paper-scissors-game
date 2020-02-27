@@ -1,17 +1,45 @@
 import React, {Component} from 'react';
-import PlayerCard from './PlayerCard'// ./is for when files are in the same directory
-//if a file is in a different folder then...to be typed in later
+import PlayerCard from './PlayerCard'
 
 
 class Game extends Component {
 constructor(){
   super();
-  this.signs = ["rock", "paper", "scissors"];//'this' keyword refers to an object to be executed upon
+  this.signs = ["rock","scissors","paper"];
   this.state = {
     playerOne: "rock",
-    playertwo: "scissors",
+    playerTwo: "scissors",
   }
 }
+
+//methods live here
+playGame = () =>{
+ this.setState({
+   playerOne:this.signs[Math.floor(Math.random()*3)],
+   playerTwo:this.signs[Math.floor(Math.random()*3)],
+ })
+
+}
+
+decideWinner = () =>{
+  const playerOne= this.state.playerOne
+  const playerTwo= this.state.playerOne
+
+  if(playerOne===playerTwo){
+    return "It's a tie!"
+  } else if ((playerOne==="rock"&&playerTwo==="scissors"||playerOne==="paper"&&playerTwo==="rock"||playerOne==="scissors"&&playerTwo==="paper"))
+  {return "Player One wins!"}
+  else
+  {return "Player Two wins!"}
+}
+
+
+
+
+
+
+
+
 
 
   render(){
@@ -21,8 +49,8 @@ constructor(){
             <PlayerCard sign={this.state.playerOne}/>
             <PlayerCard sign={this.state.playerTwo}/>
           </div>
-          <div className="winner">Here is the winner</div>
-          <button type="button">Play Game</button>
+          <div className="winner">{decideWinner()}</div>
+          <button type="button" onClick ={this.playGame}>Play Game</button>
       </div>
     )
   }

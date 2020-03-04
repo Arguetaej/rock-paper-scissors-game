@@ -23,14 +23,17 @@ playGame = () =>{
 
 decideWinner = () =>{
   const playerOne= this.state.playerOne
-  const playerTwo= this.state.playerOne
+  const playerTwo= this.state.playerTwo
 
-  if(playerOne===playerTwo){
+  if(playerOne===playerTwo)
+  {
     return "It's a tie!"
-  } else if ((playerOne==="rock"&&playerTwo==="scissors"||playerOne==="paper"&&playerTwo==="rock"||playerOne==="scissors"&&playerTwo==="paper"))
-  {return "Player One wins!"}
-  else
-  {return "Player Two wins!"}
+  } else if
+  ((playerOne==="rock"&&playerTwo==="scissors"||playerOne==="paper"&&playerTwo==="rock"||playerOne==="scissors"&&playerTwo==="paper")) {
+    return "Player One wins!"
+  } else {
+      return "Player Two wins!"
+    }
 }
 
 
@@ -49,7 +52,7 @@ decideWinner = () =>{
             <PlayerCard sign={this.state.playerOne}/>
             <PlayerCard sign={this.state.playerTwo}/>
           </div>
-          <div className="winner">{decideWinner()}</div>
+          <div className="winner">{this.decideWinner()}</div>
           <button type="button" onClick ={this.playGame}>Play Game</button>
       </div>
     )
